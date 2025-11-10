@@ -135,4 +135,10 @@ Pull requests are welcome! If you plan a major change, please open an issue firs
 
 ## 📄 License
 
-This project i
+This project is open source. If you don’t have a specific license yet, consider adding an MIT License.
+
+---
+
+## 🙌 Credits
+
+Built by **Rajeev Kumar**. Thanks for playing!
