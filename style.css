@@ -9,26 +9,38 @@ body{
     text-align: center;
 
 }
-.winningmsg{
-    margin-top: -20vmin;
-    text-align: center;
+#msg{
+    font-size: 8vmin;
+    font-weight: bold;
+    margin-bottom: 2vmin;
 }
+.msg-container{
+    height: 95vmin;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4vmin;
+    
+}
+
 .hide{
     display: none;
 }
-.playagain{
-    height: 5vmin;
-    font-size: 3vmin;
-    width: 25vmin;
+#playagain{
+    height: 10vmin;
+    font-size: 5vmin;
+    width: 40vmin;
     border-radius: 1rem  ;
     border : none;
-    background-color: #9ABCA7;
+    background-color: #161817;
     box-shadow: 0 4px 8px rgb(45, 45, 45);
     font-weight: bold;
     margin-bottom: 2vmin ;
+    color: #ffffff;
 }
 h1{
-    font-size: 6vmin;
+    font-size: 8vmin;
 }
 #mode-box{
     height: 5vmin;

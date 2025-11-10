@@ -20,8 +20,9 @@ modebtn.onclick = () => {
 // main
 let boxes = document.querySelectorAll('.box');
 let resetbtn = document.querySelector('.reset-btn');
-let playagainbtn = document.querySelector('.playagain');
-let msg = document.querySelector('#trophy');
+let newGameBtn = document.querySelector("#playagain");
+let msgContainer = document.querySelector(".msg-container");
+let msg = document.querySelector("#msg");
 
 let turn0 = true; // playerX, PlayerO
 
@@ -36,6 +37,8 @@ const winningCombos = [
     [2,4,6]
 ]
 
+let count = 0;
+
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if (turn0 === true){
@@ -49,8 +52,19 @@ boxes.forEach((box) => {
         }
         box.disabled = true;
         checkWinner();
+        count++;
+        let isWinner = checkWinner();
+        if (count === 9 && !isWinner) {
+            gameDraw();
+    }
     })
 });
+
+const gameDraw = () => {
+  msg.innerText = `Game was a Draw.`;
+  msgContainer.classList.remove("hide");
+  disableBoxes();
+};
 
 const checkWinner = () => {
     for (let pattern of winningCombos){
@@ -59,13 +73,13 @@ const checkWinner = () => {
         let box3 = boxes[pattern[2]].innerText; 
         if (box1 !== "" && box1 === box2 && box2 === box3){
             if (box1 === box2 && box2 === box3){
-                console.log("winner",box1);
-                alert("Player " + box1 + " has won the game!");
                 showWinner(box1);
             } 
         }
     }
 };
+
+
 
 const disablebtn  = () => {
     for (let box of boxes){
@@ -73,11 +87,18 @@ const disablebtn  = () => {
     }
 };
 
+const enableBoxes = () => {
+  for (let box of boxes) {
+    box.disabled = false;
+    box.innerText = "";
+  }
+};
+
+
 const showWinner = (winner) => {
-    msg.innerText = `Player ${winner} has won the game!`;
-    msg.classList.remove("hide");
-    disablebtn();
-    
+  msg.innerHTML = `Congratulations,  Winner is ${winner}`;
+  msgContainer.classList.remove("hide");
+  disablebtn();
 };
 // reset
 resetbtn.onclick = () => {
@@ -86,4 +107,12 @@ resetbtn.onclick = () => {
         box.disabled = false;
     }); 
     turn0 = true;
+};
+newGameBtn.onclick = () => {
+    boxes.forEach((box) => {
+        box.innerText = "";
+        box.disabled = false;
+    }); 
+    turn0 = true;
+    msgContainer.classList.add("hide");
 };
